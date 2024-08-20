@@ -5,8 +5,8 @@
 ********************************************************/
 
 const unsigned char *point;
-const int8_t SCL = 3;
-const int8_t SDA = 4;
+const int8_t SCL1 = 3;
+const int8_t SDA1 = 4;
 
 const unsigned char OLED_init_cmd[25]=
 {
@@ -219,7 +219,7 @@ void IIC_start(int8_t Scl, int8_t Sda)
   
   digitalWrite(Scl,LOW);
   
-        IIC_write(0x78);
+        IIC_write(0x78,SCL1,SDA1);
         
 }
 
@@ -238,18 +238,18 @@ void IIC_stop(int8_t Scl, int8_t Sda)
 void OLED_send_cmd(unsigned char o_command)
   {
     
-    IIC_start();
-    IIC_write(0x00); 
-    IIC_write(o_command);
-    IIC_stop();
+    IIC_start(SCL1,SDA1);
+    IIC_write(0x00,SCL1,SDA1); 
+    IIC_write(o_command,SCL1,SDA1);
+    IIC_stop(SCL1,SDA1);
     
   }
 void OLED_send_data(unsigned char o_data)
 { 
-    IIC_start();
-    IIC_write(0x40);
-    IIC_write(o_data);
-    IIC_stop();
+    IIC_start(SCL1,SDA1);
+    IIC_write(0x40,SCL1,SDA1);
+    IIC_write(o_data,SCL1,SDA1);
+    IIC_stop(SCL1,SDA1);
 }
 void Column_set(unsigned char column)
 {
@@ -326,8 +326,8 @@ void Picture_ReverseDisplay(const unsigned char *ptr_pic)
 }
 void  IO_init(void)
 {
-    pinMode(SCL,OUTPUT);
-    pinMode(SDA,OUTPUT);
+    pinMode(SCL1,OUTPUT);
+    pinMode(SDA1,OUTPUT);
 }
 
 
