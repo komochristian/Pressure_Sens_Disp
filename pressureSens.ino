@@ -97,7 +97,7 @@ void loop() {
   display.setCursor(0,0);
   display.println("Pressure: " + current_pressure + "  torr");
   display.display();
-  Serial.println(current_pressure);
+  Serial.println("Sensor 1: " + current_pressure);
 
   //  Display the pressure of sensor 2 on display 2
   display2.clearDisplay();
@@ -106,7 +106,7 @@ void loop() {
   display2.setCursor(0,0);
   display2.println("Pressure: " + current_pressure2 + "  torr");
   display2.display();
-  Serial.println(current_pressure2);
+  Serial.println("Sensor 2: " + current_pressure2);
 }
 
 //  Analog test code for MKS Pressure
