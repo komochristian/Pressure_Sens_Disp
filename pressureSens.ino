@@ -70,6 +70,8 @@ void loop() {
   Serial1.write("@253PR4?;FF");
   Serial2.write("@253PR4?;FF");
 
+  delay(100);
+
   //  Read if pressure sensor 1 is transmitting pressure data
   if (Serial1.available() > 0) {
     current_pressure = parse_string(Serial1.readString());
@@ -105,9 +107,6 @@ void loop() {
   display2.println("Pressure: " + current_pressure2 + "  torr");
   display2.display();
   Serial.println(current_pressure2);
-
-  //Update every quarter second
-  delay(250);
 }
 
 //  Analog test code for MKS Pressure
